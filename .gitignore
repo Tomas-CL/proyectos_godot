@@ -1,0 +1,37 @@
+# Godot-specific generated files
+.import/
+.export/
+
+# Exported builds
+bin/
+exports/
+
+# Godot cache and temporary files
+.godot/
+.cache/
+tmp/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# VSCode settings (si usas VSCode)
+.vscode/
+
+# JetBrains Rider / CLion / IntelliJ
+.idea/
+
+# Godot Mono (si NO usas C#)
+.mono/
+
+# Logs
+*.log
+
+# Backup files made by Godot
+*.translation
+*.converted.cfg
+
+# Temporary files created by editors
+*~
+*.tmp
+
