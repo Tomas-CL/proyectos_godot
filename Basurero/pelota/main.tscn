@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://caw1cpoc1igqf"]
+
+[ext_resource type="Texture2D" uid="uid://dcrn7spwo7ox5" path="res://img/fondo-hexadecimal.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b5nyimhy2nkmc" path="res://img/ground.png" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dmhwa7frce6hc" path="res://ball.tscn" id="3_h2yge"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(1944.7856, 186.70581)
+
+[node name="main" type="Node2D"]
+position = Vector2(522.99994, 271.99997)
+scale = Vector2(0.3, 0.3)
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.7016299, 0.7016299, 0.7016299, 1)
+self_modulate = Color(0.9116014, 0.9116014, 0.9116014, 1)
+position = Vector2(120, 274.2857)
+texture = ExtResource("1_h2yge")
+offset = Vector2(30, -15.855103)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(10.000183, 1080.0002)
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(-9.000122, 4.4999027)
+scale = Vector2(2.868697, 2.833334)
+texture = ExtResource("2_0xm2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-17.333168, 1.000082)
+scale = Vector2(2.868697, 2.833334)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="ball" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(-13.333099, -16.666565)
+scale = Vector2(1, 1.0536667)

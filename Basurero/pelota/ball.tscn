@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmhwa7frce6hc"]
+
+[ext_resource type="Script" uid="uid://cw4hktkyg7326" path="res://Scripts/ball.gd" id="1_41u45"]
+[ext_resource type="Texture2D" uid="uid://bnf14jxbrdboc" path="res://img/pelota.png" id="1_x8fbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_41u45"]
+radius = 105.30432
+
+[sub_resource type="Animation" id="Animation_hgol0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ktgx5"]
+resource_name = "bouce"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.7, 0.605), Vector2(0.8, 1.11), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5601"]
+_data = {
+&"RESET": SubResource("Animation_hgol0"),
+&"bouce": SubResource("Animation_ktgx5")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_41u45")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 107)
+texture = ExtResource("1_x8fbi")
+offset = Vector2(2, -107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_41u45")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n5601")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.075
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
