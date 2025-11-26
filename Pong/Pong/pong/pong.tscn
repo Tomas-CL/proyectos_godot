@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdqct5earoy4s"]
+
+[ext_resource type="PackedScene" uid="uid://cvkawfqj3tv1l" path="res://player/player.tscn" id="1_1hw3o"]
+[ext_resource type="Script" uid="uid://cueqokfpgfbme" path="res://pong/pong.gd" id="1_teprw"]
+[ext_resource type="PackedScene" uid="uid://boqgllbtpvhf6" path="res://Computer/computer.tscn" id="2_g8uh0"]
+[ext_resource type="PackedScene" uid="uid://dbjo7yyqa0rue" path="res://ball/ball.tscn" id="3_fif4v"]
+[ext_resource type="Texture2D" uid="uid://c2p583xaiksh3" path="res://assets/wall-horizontal.png" id="4_g8uh0"]
+[ext_resource type="Texture2D" uid="uid://dja4ps3craj5e" path="res://assets/wall-vertical.png" id="6_one0h"]
+[ext_resource type="Texture2D" uid="uid://deybkvaqgxhgw" path="res://assets/middle-line.png" id="7_one0h"]
+[ext_resource type="FontFile" uid="uid://4ukl4emywxbt" path="res://assets/alarm clock.ttf" id="8_gcr4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fif4v"]
+size = Vector2(1285, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcr4s"]
+size = Vector2(21, 665)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b4hy"]
+font = ExtResource("8_gcr4s")
+font_size = 60
+
+[node name="pong" type="Node2D"]
+script = ExtResource("1_teprw")
+
+[node name="Player" parent="." instance=ExtResource("1_1hw3o")]
+
+[node name="Computer" parent="." instance=ExtResource("2_g8uh0")]
+
+[node name="ball" parent="." instance=ExtResource("3_fif4v")]
+
+[node name="topWall" type="CharacterBody2D" parent="."]
+position = Vector2(640, 11)
+
+[node name="Sprite2D" type="Sprite2D" parent="topWall"]
+position = Vector2(-2.2888184e-05, 0)
+scale = Vector2(1.077441, 1)
+texture = ExtResource("4_g8uh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="topWall"]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_fif4v")
+
+[node name="bottomWall" type="CharacterBody2D" parent="."]
+position = Vector2(641, 712)
+
+[node name="Sprite2D" type="Sprite2D" parent="bottomWall"]
+position = Vector2(-0.50000966, 0)
+scale = Vector2(1.0782828, 1)
+texture = ExtResource("4_g8uh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomWall"]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_fif4v")
+
+[node name="goLeft" type="Area2D" parent="."]
+position = Vector2(10, 384)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="goLeft"]
+position = Vector2(0, -22.50001)
+scale = Vector2(1, 1.0775318)
+texture = ExtResource("6_one0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goLeft"]
+position = Vector2(-0.5, -22.5)
+shape = SubResource("RectangleShape2D_gcr4s")
+
+[node name="goRigth" type="Area2D" parent="."]
+position = Vector2(1271, 384)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="goRigth"]
+position = Vector2(0, -22.00001)
+scale = Vector2(1, 1.0791138)
+texture = ExtResource("6_one0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goRigth"]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_gcr4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640.5, 361.00003)
+scale = Vector2(0.99999315, 1.106036)
+texture = ExtResource("7_one0h")
+
+[node name="playerscore" type="Label" parent="."]
+offset_left = 519.0
+offset_top = 50.0
+offset_right = 559.0
+offset_bottom = 73.0
+text = "0"
+label_settings = SubResource("LabelSettings_7b4hy")
+horizontal_alignment = 1
+
+[node name="computerscore" type="Label" parent="."]
+offset_left = 756.0
+offset_top = 50.0
+offset_right = 794.0
+offset_bottom = 114.0
+text = "0"
+label_settings = SubResource("LabelSettings_7b4hy")
+horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="touch_up" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(0, -1)
+action = "ui_up"
+
+[node name="touch_down" type="TouchScreenButton" parent="CanvasLayer"]
+action = "ui_down"
+
+[connection signal="body_entered" from="goLeft" to="." method="_on_go_left_body_entered"]
+[connection signal="body_entered" from="goRigth" to="." method="_on_go_rigth_body_entered"]

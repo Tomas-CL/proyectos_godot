@@ -10,7 +10,7 @@ size = Vector2(94, 8)
 [node name="Node2D" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-27.000023, 23)
+position = Vector2(46, -11)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
@@ -24,7 +24,7 @@ position = Vector2(-85, 31)
 shape = SubResource("RectangleShape2D_71pa8")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(76, 3)
+position = Vector2(144, 11)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2"]
 position = Vector2(-85, 30.999996)
@@ -33,11 +33,11 @@ scale = Vector2(94, 8.249999)
 mesh = SubResource("QuadMesh_iw27f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-84.00002, 31)
+position = Vector2(-85, 31)
 shape = SubResource("RectangleShape2D_71pa8")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(-20, 27)
+position = Vector2(47, 31)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D3"]
 position = Vector2(115.99998, -12.999996)
@@ -50,6 +50,7 @@ position = Vector2(116, -13)
 shape = SubResource("RectangleShape2D_71pa8")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_c7s6e")]
+position = Vector2(68, 7)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3, 4)
