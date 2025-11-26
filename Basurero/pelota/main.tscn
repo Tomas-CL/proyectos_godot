@@ -10,18 +10,17 @@
 size = Vector2(1944.7856, 186.70581)
 
 [node name="main" type="Node2D"]
-position = Vector2(522.99994, 271.99997)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.255, 0.255)
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.7016299, 0.7016299, 0.7016299, 1)
 self_modulate = Color(0.9116014, 0.9116014, 0.9116014, 1)
-position = Vector2(120, 274.2857)
+position = Vector2(2256.8628, 1276.4705)
+scale = Vector2(0.90274507, 0.8535948)
 texture = ExtResource("1_h2yge")
-offset = Vector2(30, -15.855103)
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(10.000183, 1080.0002)
+position = Vector2(2317.6472, 2250.9805)
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor"]
@@ -35,5 +34,5 @@ scale = Vector2(2.868697, 2.833334)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="ball" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(-13.333099, -16.666565)
+position = Vector2(2164.7063, 858.82355)
 scale = Vector2(1, 1.0536667)

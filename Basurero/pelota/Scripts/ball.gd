@@ -13,7 +13,7 @@ func _process(delta):
 	if not animation_player.is_playing():
 		# Mapeo de rango (-800, 800) a (0, 1)
 		var t = clamp((velocity.y + bounce_speed) / (2 * bounce_speed), 0, 1)
-		# Escalado con interpolación según velocidad (perdonen por la hardcodeada)
+		# Escalado con interpolación según velocidad
 		var scale_x = lerp(1.2, 0.8, t)
 		var scale_y = lerp(0.8, 1.2, t)
 		var target_scale = Vector2(scale_x, scale_y)
@@ -30,7 +30,7 @@ func bounce():
 	if not is_waiting:
 		velocity.y = 0
 		timer.start()
-		animation_player.play("bounce")
+		animation_player.play("bouce")
 		is_waiting = true
 	
 
